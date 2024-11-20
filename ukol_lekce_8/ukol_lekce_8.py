@@ -76,3 +76,11 @@ class TextFileProcessor:
 
         with open(output_file_path, 'w') as output_file:
             output_file.write(new_text)
+
+
+# Příklad použití:
+processor1 = TextFileProcessor('file1.txt')
+processor2 = TextFileProcessor('file2.txt')
+
+# Task 1
+processor1.compare_files('file2.txt')
