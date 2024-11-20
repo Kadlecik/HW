@@ -84,3 +84,6 @@ processor2 = TextFileProcessor('file2.txt')
 
 # Task 1
 processor1.compare_files('file2.txt')
+
+# Task 2
+processor1.generate_statistics('statistics.txt')
