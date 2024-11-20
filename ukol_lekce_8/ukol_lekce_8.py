@@ -87,3 +87,6 @@ processor1.compare_files('file2.txt')
 
 # Task 2
 processor1.generate_statistics('statistics.txt')
+
+# Task 3
+processor1.delete_last_line('file_without_last_line.txt')
