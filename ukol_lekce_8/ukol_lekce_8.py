@@ -90,3 +90,12 @@ processor1.generate_statistics('statistics.txt')
 
 # Task 3
 processor1.delete_last_line('file_without_last_line.txt')
+
+# Task 4
+processor1.find_longest_line()
+
+# Task 5
+processor1.count_word_occurrences('your_word_here')
+
+# Task 6
+processor1.find_and_replace('old_word', 'new_word', 'replaced_file.txt')
