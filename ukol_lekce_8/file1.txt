@@ -1,0 +1,3 @@
+Ahoj svete!
+Toto je prvni soubor.
+Ma tri radky.

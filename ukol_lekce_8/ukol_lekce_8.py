@@ -1,4 +1,4 @@
- Vytvoření souboru file1.txt
+
 with open('file1.txt', 'w') as f:
     f.write("Ahoj svete!\nToto je prvni soubor.\nMa tri radky.\n")
 
