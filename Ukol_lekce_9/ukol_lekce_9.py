@@ -53,3 +53,11 @@ class Car:
         print(f"Engine Volume: {self.__engine_volume} L")
         print(f"Color: {self.__color}")
         print(f"Price: ${self.__price}")
+
+# Příklad použití
+car1 = Car("Model S", 2022, "Tesla", 2.0, "Red", 79999)
+car2 = Car("Mustang", 2021, "Ford", 5.0, "Blue", 55999)
+
+car1.display_info()
+print("---")
+car2.display_info()
