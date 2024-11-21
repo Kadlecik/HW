@@ -43,3 +43,13 @@ class Car:
 
     def set_price(self, price):
         self.__price = price
+
+
+  # Metoda pro výstup dat
+    def display_info(self):
+        print(f"Model: {self.__model}")
+        print(f"Year: {self.__year}")
+        print(f"Manufacturer: {self.__manufacturer}")
+        print(f"Engine Volume: {self.__engine_volume} L")
+        print(f"Color: {self.__color}")
+        print(f"Price: ${self.__price}")
