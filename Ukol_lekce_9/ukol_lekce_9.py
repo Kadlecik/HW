@@ -114,7 +114,7 @@ fahrenheit_temps = [32, 77, 212]
 
 converted_to_fahrenheit = converter.bulk_celsius_to_fahrenheit(celsius_temps)
 converted_to_celsius = converter.bulk_fahrenheit_to_celsius(fahrenheit_temps)
-
+print()
 print(f"Teploty v °C: {celsius_temps} převedené na °F: {converted_to_fahrenheit}")
 print(f"Teploty v °F: {fahrenheit_temps} převedené na °C: {converted_to_celsius}")
 
