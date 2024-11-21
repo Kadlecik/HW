@@ -55,7 +55,7 @@ class Car:
         print(f"Price: ${self.__price}")
 
 # Příklad použití
-car1 = Car("Model S", 2022, "Tesla", 2.0, "Red", 79999)
+car1 = Car("Octavia", 2022, "Skoda", 2.0, "White", 41888)
 car2 = Car("Mustang", 2021, "Ford", 5.0, "Blue", 55999)
 
 car1.display_info()
