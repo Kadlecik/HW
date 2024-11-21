@@ -65,3 +65,33 @@ car2.display_info()
 # Změna a získání hodnot
 car1.set_color("Black")
 print(f"Updated color of car1: {car1.get_color()}")
+
+print()
+#task 2
+class TemperatureConverter:
+    conversion_count = 0  # Statická proměnná pro sledování počtu převodů
+
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def celsius_to_fahrenheit(celsius):
+        TemperatureConverter.conversion_count += 1
+        return celsius * 9/5 + 32
+
+    @staticmethod
+    def fahrenheit_to_celsius(fahrenheit):
+        TemperatureConverter.conversion_count += 1
+        return (fahrenheit - 32) * 5/9
+
+    @staticmethod
+    def bulk_celsius_to_fahrenheit(celsius_list):
+        return [TemperatureConverter.celsius_to_fahrenheit(c) for c in celsius_list]
+
+    @staticmethod
+    def bulk_fahrenheit_to_celsius(fahrenheit_list):
+        return [TemperatureConverter.fahrenheit_to_celsius(f) for f in fahrenheit_list]
+
+    @staticmethod
+    def get_conversion_count():
+        return TemperatureConverter.conversion_count
