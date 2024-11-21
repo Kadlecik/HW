@@ -107,3 +107,15 @@ print(f"{temp_c}°C je {temp_f}°F")
 temp_f = 212
 temp_c = converter.fahrenheit_to_celsius(temp_f)
 print(f"{temp_f}°F je {temp_c}°C")
+
+# Hromadný převod jednotek
+celsius_temps = [0, 25, 100]
+fahrenheit_temps = [32, 77, 212]
+
+converted_to_fahrenheit = converter.bulk_celsius_to_fahrenheit(celsius_temps)
+converted_to_celsius = converter.bulk_fahrenheit_to_celsius(fahrenheit_temps)
+
+print(f"Teploty v °C: {celsius_temps} převedené na °F: {converted_to_fahrenheit}")
+print(f"Teploty v °F: {fahrenheit_temps} převedené na °C: {converted_to_celsius}")
+
+print(f"Počet provedených převodů: {converter.get_conversion_count()}")
