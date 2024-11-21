@@ -95,3 +95,15 @@ class TemperatureConverter:
     @staticmethod
     def get_conversion_count():
         return TemperatureConverter.conversion_count
+
+# Příklad použití
+converter = TemperatureConverter()
+
+# Převod jednotlivých teplot
+temp_c = 100
+temp_f = converter.celsius_to_fahrenheit(temp_c)
+print(f"{temp_c}°C je {temp_f}°F")
+
+temp_f = 212
+temp_c = converter.fahrenheit_to_celsius(temp_f)
+print(f"{temp_f}°F je {temp_c}°C")
