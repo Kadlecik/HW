@@ -1,3 +1,4 @@
+#task1
 class Car:
     def __init__(self, model, year, manufacturer, engine_volume, color, price):
         self.__model = model
