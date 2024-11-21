@@ -61,3 +61,7 @@ car2 = Car("Mustang", 2021, "Ford", 5.0, "Blue", 55999)
 car1.display_info()
 print("---")
 car2.display_info()
+
+# Změna a získání hodnot
+car1.set_color("Black")
+print(f"Updated color of car1: {car1.get_color()}")
