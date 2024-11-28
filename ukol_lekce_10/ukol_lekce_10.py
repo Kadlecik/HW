@@ -132,3 +132,79 @@ def decorated_date():
 print()
 decorated_time()
 decorated_date()
+
+#task 2/4
+print()
+
+def pizza_base():
+    return "Dough and tomato sauce"
+
+def add_margarita(func):
+    def wrapper():
+        return func() + ", mozzarella, basil"
+    return wrapper
+
+def add_four_cheeses(func):
+    def wrapper():
+        return func() + ", mozzarella, parmesan, gorgonzola, ricotta"
+    return wrapper
+
+def add_capricciosa(func):
+    def wrapper():
+        return func() + ", mozzarella, ham, mushrooms, artichokes, olives"
+    return wrapper
+
+def add_hawaiian(func):
+    def wrapper():
+        return func() + ", mozzarella, ham, pineapple"
+    return wrapper
+
+@add_margarita
+def margarita_pizza():
+    return pizza_base()
+
+@add_four_cheeses
+def four_cheeses_pizza():
+    return pizza_base()
+
+@add_capricciosa
+def capricciosa_pizza():
+    return pizza_base()
+
+@add_hawaiian
+def hawaiian_pizza():
+    return pizza_base()
+
+def get_pizza_choice():
+    print("Choose a pizza: ")
+    print("1. Margarita")
+    print("2. Four Cheeses")
+    print("3. Capricciosa")
+    print("4. Hawaiian")
+    choice = int(input("zadej číslo pizzy: "))
+    return choice
+
+def show_pizza(choice):
+    if choice == 1:
+        print("Margarita Pizza: " + margarita_pizza())
+    elif choice == 2:
+        print("Four Cheeses Pizza: " + four_cheeses_pizza())
+    elif choice == 3:
+        print("Capricciosa Pizza: " + capricciosa_pizza())
+    elif choice == 4:
+        print("Hawaiian Pizza: " + hawaiian_pizza())
+    else:
+        print("špatná volba, prosím zadejte volbu 1-4")
+
+def main():
+    while True:
+        choice = get_pizza_choice()
+        show_pizza(choice)
+        continue_choice = input("přejete si zadat další volbu? (ano/ne): ").lower()
+        if continue_choice != "ano":
+            print("děkuji - příště nashledanou.")
+            break
+
+# hlavní část programu
+main()
+
