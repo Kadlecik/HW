@@ -51,3 +51,17 @@ class MeatGrinder(Device):
         super().display_info()
         print(f"Grinder Size: {self.grinder_size}")
         print(f"Safety Features: {self.safety_features}")
+
+# Příklad použití tříd
+coffee_machine = CoffeeMachine("DeLonghi", "Magnifica", 1450, 1.8, "Espresso")
+blender = Blender("NutriBullet", "Pro 900", 900, "Stainless Steel", 3)
+meat_grinder = MeatGrinder("Bosch", "MFW67440", 700, "5mm", "Safety Lock")
+
+coffee_machine.display_info()
+coffee_machine.make_coffee()
+print()
+blender.display_info()
+blender.blend()
+print()
+meat_grinder.display_info()
+meat_grinder.grind_meat()
