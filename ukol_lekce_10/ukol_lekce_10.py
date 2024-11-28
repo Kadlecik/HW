@@ -37,3 +37,17 @@ class Blender(Device):
         super().display_info()
         print(f"Blade Material: {self.blade_material}")
         print(f"Speed Settings: {self.speed_settings}")
+
+class MeatGrinder(Device):
+    def __init__(self, brand, model, power, grinder_size, safety_features):
+        super().__init__(brand, model, power)
+        self.grinder_size = grinder_size
+        self.safety_features = safety_features
+
+    def grind_meat(self):
+        print("Grinding meat...")
+
+    def display_info(self):
+        super().display_info()
+        print(f"Grinder Size: {self.grinder_size}")
+        print(f"Safety Features: {self.safety_features}")
