@@ -73,14 +73,27 @@ import time
 def display_time():
     return time.strftime("%H:%M")
 
+def display_date():
+    return time.strftime("%d.%m.%Y")
+
 def decorate_function(func):
     def wrapper():
         print("*" * 20)
         print(func())
-        print("*" * 30)
+        print("*" * 10)
     return wrapper
 
+def decorate_with_hashes(func):
+    def wrapper():
+        print("#" * 10)
+        print(func())
+        print("#" *20)
+    return wrapper
 # Použití funkce
 print()
+
 decorated_display_time = decorate_function(display_time)
+decorated_display_date = decorate_with_hashes(display_date)
+
 decorated_display_time()
+decorated_display_date()
