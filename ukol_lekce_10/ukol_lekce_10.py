@@ -65,3 +65,22 @@ blender.blend()
 print()
 meat_grinder.display_info()
 meat_grinder.grind_meat()
+
+
+#task2
+import time
+
+def display_time():
+    return time.strftime("%H:%M")
+
+def decorate_function(func):
+    def wrapper():
+        print("*" * 20)
+        print(func())
+        print("*" * 30)
+    return wrapper
+
+# Použití funkce
+print()
+decorated_display_time = decorate_function(display_time)
+decorated_display_time()
