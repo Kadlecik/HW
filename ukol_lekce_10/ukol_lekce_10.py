@@ -1,4 +1,4 @@
-#task1
+#task1/1
 class Device:
     def __init__(self, brand, model, power):
         self.brand = brand
@@ -67,7 +67,7 @@ meat_grinder.display_info()
 meat_grinder.grind_meat()
 
 
-#task2
+#task2/1+2
 import time
 
 def display_time():
@@ -97,3 +97,38 @@ decorated_display_date = decorate_with_hashes(display_date)
 
 decorated_display_time()
 decorated_display_date()
+
+#task2/3
+import time
+
+def display_time():
+    return time.strftime("%H:%M")
+
+def display_date():
+    return time.strftime("%d.%m.%Y")
+
+def decorate_with_stars(func):
+    def wrapper():
+        print("<" * 20)
+        print(func())
+        print("<" * 10)
+    return wrapper
+
+def decorate_with_hashes(func):
+    def wrapper():
+        print(">" * 10)
+        print(func())
+        print(">" * 20)
+    return wrapper
+
+# Použití dekorátorů pomocí syntaxe dekorátoru
+@decorate_with_stars
+def decorated_time():
+    return display_time()
+
+@decorate_with_hashes
+def decorated_date():
+    return display_date()
+print()
+decorated_time()
+decorated_date()
