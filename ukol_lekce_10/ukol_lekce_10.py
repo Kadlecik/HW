@@ -23,3 +23,17 @@ class CoffeeMachine(Device):
         super().display_info()
         print(f"Water Capacity: {self.water_capacity}L")
         print(f"Coffee Type: {self.coffee_type}")
+
+class Blender(Device):
+    def __init__(self, brand, model, power, blade_material, speed_settings):
+        super().__init__(brand, model, power)
+        self.blade_material = blade_material
+        self.speed_settings = speed_settings
+
+    def blend(self):
+        print("Blending ingredients...")
+
+    def display_info(self):
+        super().display_info()
+        print(f"Blade Material: {self.blade_material}")
+        print(f"Speed Settings: {self.speed_settings}")
