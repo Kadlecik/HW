@@ -2,7 +2,7 @@ import socket
 import threading
 
 class TicTacToeClient1:
-    def __init__(self, host='127.0.0.1', port=65450):
+    def __init__(self, host='127.0.0.1', port=65440):
         self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.client_socket.connect((host, port))
         print("Connected to server")
@@ -19,43 +19,20 @@ class TicTacToeClient1:
 
                 print(f"Server: {message}")
 
-                # Určení hráče
                 if "You are player" in message:
                     self.player = message.split()[-1]
-                    print(f"Assigned as player {self.player}")
 
-                # Konec hry
-                elif "wins" in message or "draw" in message or "loses" in message:
-                    print("Konec hry!")
-                    break
-
+                elif "Your move" in message:
+                    move = input("Enter your move (0-8 or 'stop'): ")
+                    self.client_socket.send(move.encode())
             except Exception as e:
                 print(f"Error receiving message: {e}")
                 break
 
-    def send_message(self, message):
-        try:
-            self.client_socket.send(message.encode())
-            print(f"Sent message: {message}")
-        except Exception as e:
-            print(f"Error sending message: {e}")
-
     def run(self):
-        while self.player is None:
-            pass  # Čekání na přiřazení hráče
-
+        print("Client 1 is running...")
         while True:
-            try:
-                message = input("Zadej svůj tah (0-8) nebo napiš 'stop' pro ukončení hry: ")
-                self.send_message(message)
-                if message.lower() == 'stop':
-                    break
-            except Exception as e:
-                print(f"Error during input: {e}")
-                break
-
-        self.client_socket.close()
-        print("Disconnected from server.")
+            pass
 
 if __name__ == '__main__':
     client = TicTacToeClient1()

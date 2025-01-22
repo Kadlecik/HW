@@ -2,7 +2,7 @@ import socket
 import threading
 
 class TicTacToeServer:
-    def __init__(self, host='127.0.0.1', port=65450):
+    def __init__(self, host='127.0.0.1', port=65440):
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         self.server_socket.bind((host, port))
@@ -17,43 +17,47 @@ class TicTacToeServer:
             print(f"Player {player_id} connected")
             client_socket.send(f'You are player {player_id}'.encode())
             while not self.game_over:
-                if self.current_player + 1 == player_id:  # Kontrola, jestli je na tahu tento hráč
+                if self.current_player + 1 == player_id:
                     self.send_to_client(client_socket, self.format_board())
                     self.send_to_client(client_socket, f"Your move, Player {player_id} (0-8 or 'stop'): ")
+                    try:
+                        message = client_socket.recv(1024).decode().strip()
+                        if not message:
+                            print(f"Player {player_id} disconnected.")
+                            self.game_over = True
+                            break
 
-                    message = client_socket.recv(1024).decode().strip()
-                    if not message:
-                        print(f"Player {player_id} disconnected.")
-                        break
+                        print(f"Received from Player {player_id}: {message}")
 
-                    print(f"Received from Player {player_id}: {message}")
+                        if message.lower() == 'stop':
+                            self.game_over = True
+                            self.send_to_all(f'Player {player_id} has stopped the game. Player {player_id} loses!')
+                            break
 
-                    if message.lower() == 'stop':
-                        self.game_over = True
-                        self.send_to_all(f'Player {player_id} has stopped the game. Player {player_id} loses!')
-                        break
-
-                    elif message.isdigit():
-                        move = int(message)
-                        if 0 <= move < 9 and self.board[move] == ' ':
-                            self.board[move] = 'X' if player_id == 1 else 'O'
-                            if self.check_winner():
-                                self.send_to_all(self.format_board())
-                                self.send_to_all(f'Player {player_id} wins!')
-                                self.game_over = True
-                            elif ' ' not in self.board:
-                                self.send_to_all(self.format_board())
-                                self.send_to_all('Draw!')
-                                self.game_over = True
-                            self.current_player = 1 - self.current_player
+                        elif message.isdigit():
+                            move = int(message)
+                            if 0 <= move < 9 and self.board[move] == ' ':
+                                self.board[move] = 'X' if player_id == 1 else 'O'
+                                if self.check_winner():
+                                    self.send_to_all(self.format_board())
+                                    self.send_to_all(f'Player {player_id} wins!')
+                                    self.game_over = True
+                                elif ' ' not in self.board:
+                                    self.send_to_all(self.format_board())
+                                    self.send_to_all('Draw!')
+                                    self.game_over = True
+                                self.current_player = 1 - self.current_player
+                            else:
+                                self.send_to_client(client_socket, 'Invalid move. Try again.')
                         else:
-                            self.send_to_client(client_socket, 'Invalid move. Try again.')
-                    else:
-                        self.send_to_client(client_socket, 'Invalid input. Please enter a number between 0-8 or "stop".')
+                            self.send_to_client(client_socket, 'Invalid input. Please enter a number between 0-8 or "stop".')
+                    except Exception as e:
+                        print(f"Error handling input from Player {player_id}: {e}")
+                        break
                 else:
-                    threading.Event().wait(0.1)  # Pokud není tento hráč na tahu, čeká
-        except Exception as e:
-            print(f"Error with player {player_id}: {e}")
+                    threading.Event().wait(0.1)
+        except (ConnectionResetError, ConnectionAbortedError) as e:
+            print(f"Player {player_id} disconnected: {e}")
         finally:
             print(f"Closing connection for Player {player_id}")
             client_socket.close()
