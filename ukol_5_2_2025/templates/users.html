@@ -8,7 +8,8 @@
         <th>Jméno</th>
         <th>Adresa</th>
         <th>Telefon</th>
-        <th>věk</th>
+        <th>Věk</th>
+        <th>Profil</th>
       </tr>
     </thead>
     <tbody>
@@ -17,30 +18,35 @@
         <td>Praha, Ulice 123, 110 00</td>
         <td>+420 111 111 111</td>
         <td>42</td>
+        <td><a href="{{ url_for('profile', id=1) }}">Zobrazit</a></td>
       </tr>
       <tr>
         <td>Eva Dvořáková</td>
         <td>Brno, Ulice 456, 602 00</td>
         <td>+420 222 222 222</td>
         <td>22</td>
+        <td><a href="{{ url_for('profile', id=2) }}">Zobrazit</a></td>
       </tr>
       <tr>
         <td>Martin Svoboda</td>
         <td>Ostrava, Ulice 789, 700 30</td>
         <td>+420 555 555 555</td>
         <td>36</td>
+        <td><a href="{{ url_for('profile', id=3) }}">Zobrazit</a></td>
       </tr>
       <tr>
         <td>Katerina Bartošová</td>
         <td>Plzeň, Ulice 321, 301 00</td>
         <td>+420 666 666 666</td>
         <td>55</td>
+        <td><a href="{{ url_for('profile', id=4) }}">Zobrazit</a></td>
       </tr>
       <tr>
         <td>Petr Horák</td>
         <td>Liberec, Ulice 654, 460 01</td>
         <td>+420 777 777 777</td>
         <td>99</td>
+        <td><a href="{{ url_for('profile', id=5) }}">Zobrazit</a></td>
       </tr>
     </tbody>
   </table>

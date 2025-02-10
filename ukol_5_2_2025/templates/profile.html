@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Profil uživatele: {{ user.name }}</h1>
+  <p><strong>Věk:</strong> {{ user.age }}</p>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>Adresa:</strong> {{ user.address }}</p>
+  <p><strong>Telefon:</strong> {{ user.phone }}</p>
+  <p><strong>O uživateli:</strong> {{ user.bio }}</p>
+{% endblock %}
