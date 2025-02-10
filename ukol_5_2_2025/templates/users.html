@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Seznam uživatelů</h1>
+  <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Jméno</th>
+        <th>Adresa</th>
+        <th>Telefon</th>
+        <th>věk</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Jan Novák</td>
+        <td>Praha, Ulice 123, 110 00</td>
+        <td>+420 111 111 111</td>
+        <td>42</td>
+      </tr>
+      <tr>
+        <td>Eva Dvořáková</td>
+        <td>Brno, Ulice 456, 602 00</td>
+        <td>+420 222 222 222</td>
+        <td>22</td>
+      </tr>
+      <tr>
+        <td>Martin Svoboda</td>
+        <td>Ostrava, Ulice 789, 700 30</td>
+        <td>+420 555 555 555</td>
+        <td>36</td>
+      </tr>
+      <tr>
+        <td>Katerina Bartošová</td>
+        <td>Plzeň, Ulice 321, 301 00</td>
+        <td>+420 666 666 666</td>
+        <td>55</td>
+      </tr>
+      <tr>
+        <td>Petr Horák</td>
+        <td>Liberec, Ulice 654, 460 01</td>
+        <td>+420 777 777 777</td>
+        <td>99</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
