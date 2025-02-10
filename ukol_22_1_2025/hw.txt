@@ -1,0 +1,12 @@
+Repozitar s podkladmi: https://github.com/PY-TU-09-24/flask-db
+
+Task 1: Nájsť používateľov, ktorí poslali správy do konkrétnej miestnosti (napr. room1).
+
+Task 2: Spočítať, koľko rôznych používateľov poslalo správy do jednotlivých miestností.
+
+Task 3: Nájsť miestnosti, do ktorých konkrétny používateľ (napr. user2) poslal správy.
+
+Task 4: Zobraziť počet správ, ktoré poslal každý používateľ.
+
+Task 5: Zobraziť zoznam miestností spolu s počtom správ, ktoré poslali jednotliví používatelia.
+
