@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+  <h1>Kontaktujte nás</h1>
+  <p>Máte otázky? Rádi vám pomůžeme. Níže naleznete kontaktní údaje našich oddělení:</p>
+
+  <div class="contacts">
+    <div class="contact-item">
+      <h2>Technická podpora</h2>
+      <p><strong>Email:</strong> podpora@example.com</p>
+      <p><strong>Telefon:</strong> +420 123 456 789</p>
+    </div>
+
+    <div class="contact-item">
+      <h2>Obchodní oddělení</h2>
+      <p><strong>Email:</strong> obchod@example.com</p>
+      <p><strong>Telefon:</strong> +420 987 654 321</p>
+    </div>
+
+    <div class="contact-item">
+      <h2>Marketing</h2>
+      <p><strong>Email:</strong> marketing@example.com</p>
+      <p><strong>Telefon:</strong> +420 456 789 123</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>Kontaktujte nás pomocí formuláře</h2>
+  <form action="{{ url_for('send_message') }}" method="post">
+    <div>
+      <label for="name">Jméno:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div>
+      <label for="message">Zpráva:</label>
+      <textarea id="message" name="message" required></textarea>
+    </div>
+
+    <button type="submit">Odeslat</button>
+  </form>
+{% endblock %}

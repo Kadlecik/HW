@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    {% include 'header.html' %}
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Domů</a></li>
+        <li><a href="{{ url_for('about') }}">O nás</a></li>
+        <li><a href="{{ url_for('contact') }}">Kontakt</a></li>
+        <li><a href="{{ url_for('users') }}">seznam uživatelů</li>
+      </ul>
+    </nav>
+
+    <main>
+      {% block content %}
+      <!-- Podstránky budú definovať svoj obsah v tomto bloku -->
+      {% endblock %}
+    </main>
+
+    {% include 'footer.html' %}
+  </body>
+</html>
