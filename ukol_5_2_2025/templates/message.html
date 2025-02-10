@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Odeslat zprávu</h1>
+  <form action="{{ url_for('message') }}" method="post">
+    <div>
+      <label for="message">Zpráva:</label><br>
+      <textarea id="message" name="message" rows="5" cols="50" required></textarea>
+    </div>
+    <button type="submit">Odeslat</button>
+  </form>
+{% endblock %}
