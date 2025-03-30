@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Úkoly</title>
+</head>
+<body>
+    <script>
+        // Konstanty
+        const CURRENT_YEAR = 2025;
+        const EXCHANGE_RATE = 0.926; // kurz dolarů na eura
+        const FILE_SIZE_MB = 820; // velikost souboru v MB
+
+        // 1. Pozdrav uživatele
+        let userName = prompt("Zadejte své jméno:");
+        alert(`Ahoj, ${userName}!`);
+
+        // 2. Věk uživatele
+        let birthYear = parseInt(prompt("Zadejte rok svého narození:"));
+        let age = CURRENT_YEAR - birthYear;
+        alert(`Vaše věk je ${age} let.`);
+
+        // 3. Obvod čtverce
+        let squareSide = parseFloat(prompt("Zadejte délku strany čtverce v cm:"));
+        let squarePerimeter = squareSide * 4;
+        alert(`Obvod čtverce je ${squarePerimeter} cm2.`);
+
+        // 4. Plocha kruhu
+        let circleRadius = parseFloat(prompt("Zadejte poloměr kruhu v cm:"));
+        let circleArea = Math.PI * (circleRadius ** 2);
+        alert(`Plocha kruhu je ${circleArea.toFixed(2)} cm2.`);
+
+        // 5. Požadovaná rychlost
+        let distanceKm = parseFloat(prompt("Zadejte vzdálenost mezi dvěma městy v km:"));
+        let travelTimeHours = parseFloat(prompt("Zadejte dobu cesty v hodinách:"));
+        let requiredSpeed = distanceKm / travelTimeHours;
+        alert(`Požadovaná rychlost je ${requiredSpeed.toFixed(2)} km/h.`);
+
+        // 6. Převod dolarů na eura
+        let dollars = parseFloat(prompt("Zadejte částku v dolarech:"));
+        let euros = dollars * EXCHANGE_RATE;
+        alert(`${dollars} dolarů je ${euros.toFixed(2)} eur.`);
+
+        // 7. Počet souborů na flash disku
+        let usbSizeGb = parseFloat(prompt("Zadejte velikost flash disku v GB:"));
+        let usbSizeMb = usbSizeGb * 1024; // převod GB na MB
+        let numberOfFiles = Math.floor(usbSizeMb / FILE_SIZE_MB);
+        alert(`Na flash disku můžete uložit ${numberOfFiles} souborů po ${FILE_SIZE_MB} MB.`);
+
+        // 8. Počet čokoládových tyčinek a změna
+        let walletMoney = parseFloat(prompt("Zadejte částku peněz v peněžence:"));
+        let chocolatePrice = parseFloat(prompt("Zadejte cenu jedné čokoládové tyčinky:"));
+        let numberOfChocolates = Math.floor(walletMoney / chocolatePrice);
+        let change = walletMoney - (numberOfChocolates * chocolatePrice);
+        alert(`Můžete koupit ${numberOfChocolates} čokoládových tyčinek a máte zůstatek ${change.toFixed(2)} Kč.`);
+
+        // 9. Zpětné zobrazení tříciferného čísla
+        let threeDigitNumber = parseInt(prompt("Zadejte tříciferné číslo:"));
+        let reversedNumber = (threeDigitNumber % 10) * 100 + Math.floor((threeDigitNumber % 100) / 10) * 10 + Math.floor(threeDigitNumber / 100);
+        alert(`Zpětné číslo je ${reversedNumber}.`);
+
+        // 10. Zobrazení sudého čísla
+        let inputNumber = parseInt(prompt("Zadejte celé číslo:"));
+        let evenNumber = inputNumber % 2 === 0 ? inputNumber : inputNumber + 1;
+        alert(`Nejbližší sudé číslo je ${evenNumber}.`);
+    </script>
+</body>
+</html>
