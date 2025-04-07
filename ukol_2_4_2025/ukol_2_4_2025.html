@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotbalové hřiště s míčem</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        #hriste {
+            width: 100vw;
+            height: 100vh;
+            background-color: #4CAF50;
+            background-image: linear-gradient(
+                to right,
+                #4CAF50, #4CAF50 5%, 
+                #8BC34A, #8BC34A 10%,
+                #4CAF50, #4CAF50 15%,
+                #8BC34A, #8BC34A 20%,
+                #4CAF50, #4CAF50 25%,
+                #8BC34A, #8BC34A 30%,
+                #4CAF50, #4CAF50 35%,
+                #8BC34A, #8BC34A 40%,
+                #4CAF50, #4CAF50 45%,
+                #8BC34A, #8BC34A 50%,
+                #4CAF50, #4CAF50 55%,
+                #8BC34A, #8BC34A 60%,
+                #4CAF50, #4CAF50 65%,
+                #8BC34A, #8BC34A 70%,
+                #4CAF50, #4CAF50 75%,
+                #8BC34A, #8BC34A 80%,
+                #4CAF50, #4CAF50 85%,
+                #8BC34A, #8BC34A 90%,
+                #4CAF50, #4CAF50 95%,
+                #8BC34A
+            );
+            position: relative;
+            cursor: pointer;
+            border: 2px solid white;
+            box-sizing: border-box;
+        }
+        
+        /* Středová čára */
+        #stredova-cara {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            width: 0;
+            border-left: 2px solid white;
+        }
+        
+        /* Středový kruh */
+        #stredovy-kruh {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        
+        /* Míč */
+        #mic {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            border-radius: 50%;
+            background-color: white;
+            background-image: radial-gradient(circle at center, black 30%, transparent 30%);
+            box-shadow: inset 5px 5px 10px rgba(0,0,0,0.1);
+            transition: left 0.5s ease-out, top 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="hriste">
+        <div id="stredova-cara"></div>
+        <div id="stredovy-kruh"></div>
+        <div id="mic"></div>
+    </div>
+    
+    <script>
+        const hriste = document.getElementById('hriste');
+        const mic = document.getElementById('mic');
+        
+        // Počáteční pozice míče uprostřed hřiště
+        function inicializujMic() {
+            mic.style.left = (hriste.clientWidth / 2 - 50) + 'px';
+            mic.style.top = (hriste.clientHeight / 2 - 50) + 'px';
+        }
+        
+        // Inicializace míče při načtení a změně velikosti okna
+        inicializujMic();
+        window.addEventListener('resize', inicializujMic);
+        
+        hriste.addEventListener('click', function(e) {
+            // Získat pozici kliknutí relativně k hřišti
+            const hristeRect = hriste.getBoundingClientRect();
+            
+            // Vypočítat novou pozici míče (střed míče na pozici kliknutí)
+            let newX = e.clientX - hristeRect.left - 50; // 50 je polovina šířky míče
+            let newY = e.clientY - hristeRect.top - 50; // 50 je polovina výšky míče
+            
+            // Kontrola hranic - míč nesmí přesáhnout okraje hřiště
+            const minX = 0;
+            const maxX = hriste.clientWidth - 100; // 100 je šířka míče
+            const minY = 0;
+            const maxY = hriste.clientHeight - 100; // 100 je výška míče
+            
+            if (newX < minX) newX = minX;
+            if (newX > maxX) newX = maxX;
+            if (newY < minY) newY = minY;
+            if (newY > maxY) newY = maxY;
+            
+            // Nastavit novou pozici míče
+            mic.style.left = newX + 'px';
+            mic.style.top = newY + 'px';
+        });
+    </script>
+</body>
+</html>
+
